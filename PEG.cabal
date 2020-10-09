@@ -4,7 +4,7 @@ cabal-version: 1.12
 --
 -- see: https://github.com/sol/hpack
 --
--- hash: d486d1d6b22589697932feb5287e8e005ae76630ccf4a952704713e453d88180
+-- hash: 5488d39c7991b164892379a5b96a13a0bc8377507ddf8380ff654e07ebcbe302
 
 name:           PEG
 version:        0.1.0.0
@@ -28,6 +28,7 @@ source-repository head
 library
   exposed-modules:
       Lib
+      PackRatParserCombinators
   other-modules:
       Paths_PEG
   hs-source-dirs:
