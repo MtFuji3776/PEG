@@ -38,10 +38,10 @@ pMultitive d = alt1 where
                 Parsed '*' d'' -> 
                     case dvMultitive d'' of
                         Parsed vright d''' ->
-                            Parsed (vleft * vright) d'''
+                            Parsed (vleft * vright) d''';
                         _ -> alt2;
                 _ -> alt2;
-        _ -> alt2;
+        _ -> alt2
     alt2 = dvPrimary d
 
 pPrimary :: Derivs -> Result Int
@@ -51,25 +51,25 @@ pPrimary d = alt1 where
             case dvAdditive d' of
                 Parsed vmiddle d'' ->
                     case dvChar d'' of
-                        Parsed ')' d''' -> Parsed vmiddle d'''
-                        _ -> alt2
-                _ -> alt2
+                        Parsed ')' d''' -> Parsed vmiddle d''';
+                        _ -> alt2;
+                _ -> alt2;
         _ -> alt2
     alt2 = dvDecimal d -- alt1が失敗したらalt2の番
 
 pDecimal :: Derivs -> Result Int
 pDecimal d = alt1 where
-    alt1 =   case dvDecimal d of   -- ここもっと手短に書けないか
-        Parsed 0 d' -> Parsed 0 d' 
-        Parsed 1 d' -> Parsed 1 d'
-        Parsed 2 d' -> Parsed 2 d'
-        Parsed 3 d' -> Parsed 3 d'
-        Parsed 4 d' -> Parsed 4 d'
-        Parsed 5 d' -> Parsed 5 d'
-        Parsed 6 d' -> Parsed 6 d'
-        Parsed 7 d' -> Parsed 7 d'
-        Parsed 8 d' -> Parsed 8 d'
-        Parsed 9 d' -> Parsed 9 d'
+    alt1 =   case dvChar d of   -- ここもっと手短に書けないか
+        Parsed '0' d' -> Parsed 0 d'; 
+        Parsed '1' d' -> Parsed 1 d';
+        Parsed '2' d' -> Parsed 2 d';
+        Parsed '3' d' -> Parsed 3 d';
+        Parsed '4' d' -> Parsed 4 d';
+        Parsed '5' d' -> Parsed 5 d';
+        Parsed '6' d' -> Parsed 6 d';
+        Parsed '7' d' -> Parsed 7 d';
+        Parsed '8' d' -> Parsed 8 d';
+        Parsed '9' d' -> Parsed 9 d';
         _           -> NoParse
 
 -- 入力列を受け取り、メモの最終結果を返す
